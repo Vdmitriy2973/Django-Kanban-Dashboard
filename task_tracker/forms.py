@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
-        model = User  # Используем встроенную модель Django
+        model = User
         fields = ['username', 'password', 'first_name', 'last_name', 'email','age']
         widgets = {
             'password': forms.PasswordInput(),

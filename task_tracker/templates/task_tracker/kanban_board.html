@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'task_tracker/css/kanban_board_styles.css' %}">
+    <title>Личный кабинет</title>
+</head>
+<body>
+<h1 class="dashboard__title">Kanban Dashboard</h1>
+<div class="container">
+    <div class="header">
+        <div class="left_side__header">
+            <h2>Привет, {{ user.username }}!</h2>
+            <p><i class="fa-solid fa-clock"></i> Текущее время: {{ current_time }}</p>
+        </div>
+        <div class="right_side__header">
+            <form method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
+                <button type="submit"><i class="fa-solid fa-user"></i> {{ user.username }}</button>
+            </form>
+
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit"><i class="fa-solid fa-sign-out-alt"></i> Выход</button>
+            </form>
+        </div>
+    </div>
+    <div class="dashboard">
+        <div class="dashboard__section">
+            <h2>New tasks</h2>
+            <div class="task">Test task</div>
+            <div class="task">Test task</div>
+            <div class="task">Test task</div>
+            <div class="task">Test task</div>
+            <div class="task">Test task</div>
+            <div class="task">Test task</div>
+        </div>
+        <div class="dashboard__section"><h2>In progress</h2></div>
+        <div class="dashboard__section"><h2>Code review</h2></div>
+        <div class="dashboard__section"><h2>Delivered</h2></div>
+        <div class="dashboard__section"><h2>Done</h2></div>
+    </div>
+</div>
+<script src="{% static 'task_tracker/js/kanban_task_drag_and_drop.js' %}"></script>
+</body>
+</html>
