@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import User, Task
 from django.contrib.auth.forms import AuthenticationForm
 
 class UserProfileForm(forms.ModelForm):
@@ -19,3 +19,9 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль', 'class': 'form-control'})
     )
+
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['task_name','task_description','category','created_at','expire_at','author']

@@ -64,9 +64,10 @@ button:hover {
     border-radius: 8px;
     background: #fff;
     padding: 10px;
+    position:relative;
 }
 
-.dashboard__section h2
+.dashboard__section__title
 {
     text-align: center;
     font-size: 18px;
@@ -92,4 +93,13 @@ button:hover {
 
 .task:active {
     cursor: grabbing;
+}
+
+.add_task__btn
+{
+    position:absolute;
+    padding:10px;
+    bottom:0;
+    display:block;
+    width:90%;
 }

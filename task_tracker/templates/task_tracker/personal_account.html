@@ -13,23 +13,35 @@
         <h2>Профиль пользователя</h2>
         <form method="POST">
             <div class="form-group">
-                <label for="username">Имя пользователя</label>
+                <label for="username">Логин</label>
                 <input type="text" id="username" name="username" value="{{ user.username }}" readonly>
             </div>
 
             <div class="form-group">
+                <label for="last_name">Фамилия</label>
+                {% if user.last_name %}
+                    <input type="text" id="last_name" name="first_name" value="{{ user.last_name }}" readonly>
+                {% else %}
+                    <input type="text" id="last_name" name="first_name" value="None" readonly>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
                 <label for="first_name">Имя</label>
-                <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" readonly>
+                {% if user.first_name %}
+                    <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" readonly>
+                {% else %}
+                    <input type="text" id="first_name" name="first_name" value="None" readonly>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="middle_name">Отчество</label>
-                <input type="text" id="middle_name" name="middle_name" value="{{ user.middle_name }}" readonly>
-            </div>
-
-            <div class="form-group">
-                <label for="last_name">Фамилия</label>
-                <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}" readonly>
+                {% if user.middle_name %}
+                    <input type="text" id="middle_name" name="first_name" value="{{ user.middle_name }}" readonly>
+                {% else %}
+                    <input type="text" id="middle_name" name="first_name" value="None" readonly>
+                {% endif %}
             </div>
 
             <div class="form-group">
@@ -39,7 +51,12 @@
 
             <div class="form-group">
                 <label for="age">Возраст</label>
-                <input type="number" id="age" name="age" value="{{ user.age }}" readonly>
+
+                {% if user.age %}
+                    <input type="text" id="age" name="age" value="{{ user.age }}" readonly>
+                {% else %}
+                    <input type="text" id="age" name="age" value="None" readonly>
+                {% endif %}
             </div>
 
             <div class="form-group">

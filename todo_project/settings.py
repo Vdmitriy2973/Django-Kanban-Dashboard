@@ -10,6 +10,24 @@ DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'django_errors.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'task_tracker'
+    'task_tracker',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -30,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 
 ]
 
@@ -49,6 +69,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 WSGI_APPLICATION = 'todo_project.wsgi.application'

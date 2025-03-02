@@ -1,27 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ='stylesheet' href="{% static 'task_tracker/css/auth/register.css' %}">
     <title>Регистрация</title>
 </head>
 <body>
-    <h2>Регистрация</h2>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
-    </form>
+    <div class="container">
+        <h2>Регистрация</h2>
 
-    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+
         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
     </div>
+
 </body>
 </html>

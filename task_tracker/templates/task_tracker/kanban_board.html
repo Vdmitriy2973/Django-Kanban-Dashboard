@@ -28,20 +28,36 @@
             </form>
         </div>
     </div>
+
     <div class="dashboard">
-        <div class="dashboard__section">
-            <h2>New tasks</h2>
-            <div class="task">Test task</div>
-            <div class="task">Test task</div>
-            <div class="task">Test task</div>
-            <div class="task">Test task</div>
-            <div class="task">Test task</div>
-            <div class="task">Test task</div>
+        <div class="dashboard__section upcoming_tasks">
+            <h2 class="dashboard__section__title">Upcoming</h2>
+            {% for task in upcoming %}
+            <div class="task">
+                <h3 class="task_name">{{ task.task_name }}</h3>
+                <h5 class="task_description">{{ task.task_description}}</h5>
+                <h6>{{ task.created_at }}</h6>
+                <h6>{{ task.expire_at}}</h6>
+                <h7>{{ task.author}}</h7>
+            </div>
+            {% endfor %}
+            <form class="add_task" method="GET" action="{% url 'create_task' %}">
+                {% csrf_token %}
+                <button class="add_task__btn" type="submit">Добавить задачу</button>
+            </form>
         </div>
-        <div class="dashboard__section"><h2>In progress</h2></div>
-        <div class="dashboard__section"><h2>Code review</h2></div>
-        <div class="dashboard__section"><h2>Delivered</h2></div>
-        <div class="dashboard__section"><h2>Done</h2></div>
+        <div class="dashboard__section in_progress_tasks">
+            <h2 class="dashboard__section__title">In progress</h2>
+        </div>
+        <div class="dashboard__section code_review_tasks">
+            <h2 class="dashboard__section__title">Code review</h2>
+        </div>
+        <div class="dashboard__section delivered_tasks">
+            <h2 class="dashboard__section__title">Delivered</h2>
+        </div>
+        <div class="dashboard__section done_tasks">
+            <h2 class="dashboard__section__title">Done</h2>
+        </div>
     </div>
 </div>
 <script src="{% static 'task_tracker/js/kanban_task_drag_and_drop.js' %}"></script>

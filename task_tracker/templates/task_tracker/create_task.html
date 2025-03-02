@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать задачу</title>
+</head>
+<body>
+    <h1>Создать новую задачу</h1>
+    <form action="{% url 'create_task' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="task_name">Название задачи:</label>
+            <input type="text" id="task_name" name="task_name" maxlength="50" required>
+        </div>
+        <div>
+            <label for="task_description">Описание задачи:</label>
+            <input type="text" id="task_description" name="task_description" maxlength="150" required>
+        </div>
+        <div>
+            <label for="expire_at">Дата окончания:</label>
+            <input type="datetime-local" id="expire_at" name="expire_at" required>
+        </div>
+        <div>
+            <button type="submit">Создать задачу</button>
+        </div>
+    </form>
+</body>
+</html>

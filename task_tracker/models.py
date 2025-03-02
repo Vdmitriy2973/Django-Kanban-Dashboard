@@ -18,3 +18,10 @@ class User(AbstractUser):
         return self.username
 
 
+class Task(models.Model):
+    task_name = models.CharField(max_length=50,null=False)
+    task_description = models.CharField(max_length=150,null=False)
+    category = models.CharField(max_length=20,null=False,default='upcoming')
+    created_at = models.DateTimeField()
+    expire_at = models.DateTimeField()
+    author = models.CharField(max_length=40, null=False)

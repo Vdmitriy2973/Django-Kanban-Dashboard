@@ -18,6 +18,16 @@
         <button type="submit" class="btn btn-primary">Войти</button>
     </form>
 
+    {% if messages %}
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
 </div>
 </body>
 </html>
